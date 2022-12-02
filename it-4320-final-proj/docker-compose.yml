@@ -1,0 +1,13 @@
+version: "3.8"
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: bus-trip-4320
+    ports:
+      - "5002:5000"
+    volumes:
+      - .:/project
+    environment:
+      FLASK_ENV: development

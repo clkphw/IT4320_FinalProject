@@ -1,0 +1,36 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="formwrapper">
+  <h2 class="title">Administrator Login</h2>
+  
+  <form method="POST" action="/admin">
+      {{ form.csrf_token }}
+      <div class="form-field">{{ form.username.label }} {{ form.username }}
+        {% if form.username.errors %}
+          <ul class="errors">
+            {% for error in form.username.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      <div class="form-field">{{ form.password.label }} {{ form.password }}
+        {% if form.password.errors %}
+          <ul class="errors">
+            {% for error in form.password.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      
+      {{ form.login }}
+  </form>
+  
+</div>
+{% endblock %}

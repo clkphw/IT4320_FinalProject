@@ -1,0 +1,27 @@
+{% extends 'layout.jinja2' %}
+
+{% block styles %}
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/forms.css') }}" rel="stylesheet" type="text/css">
+{% endblock %}
+
+{% block content %}
+<div class="formwrapper">
+  <h2 class="title">IT-4320 Trip Reservation System</h2>
+  <p>Welcome to the IT-4320 reservation system. Use the select box to choose whether to make a reservation or log in as an administrator.</p>
+  <form method="POST" action="/">
+      {{ form.csrf_token }}
+      <div class="form-field">{{ form.option.label }} {{ form.option }}
+        {% if form.option.errors %}
+          <ul class="errors">
+            {% for error in form.option.errors %}
+              <li>{{ error }}</li>
+            {% endfor %}
+          </ul>
+        {% endif %}
+      </div>
+      
+      {{ form.submit }}
+  </form>
+
+</div>
+{% endblock %}
