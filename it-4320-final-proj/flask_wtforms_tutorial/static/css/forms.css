@@ -142,3 +142,10 @@ i {
 .g-recaptcha div {
   margin: auto;
 }
+
+#table__row{
+  text-align: center;
+}
+#table__header{
+  text-align: center;
+}
