@@ -7,7 +7,20 @@
 {% block content %}
 <div class="formwrapper">
   <h2 class="title">Reserve Your Seat</h2>
-  
+  <table class = "table__header">
+    <tr class = "table__header">
+      {% for header in title %}
+      <th class = "table__cell">{{header}}</th>
+      {% endfor %}
+    </tr>
+    {% for row in ResList %}
+    <tr class = "table__row">
+      {% for cell in row %}
+      <td class = "tabel__cell">{{ cell }}</td>
+      {% endfor %}
+    </tr>
+    {% endfor %}
+  </table>
   <form method="POST" action="/reservations">
       {{ form.csrf_token }}
       <div class="form-field">{{ form.first_name.label }} {{ form.first_name }}
