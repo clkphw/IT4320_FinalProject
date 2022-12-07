@@ -22,6 +22,14 @@ form {
   margin: 0 0 40px 0;
 }
 
+<!-- .nav li:not(:last-child) {
+  display: inline-block;
+  text-align: right;
+  border-right: 1px solid black;
+  padding: 0 0.5rem;
+} 
+-->
+
 .formwrapper {
   background: white;
   width: 800px;
