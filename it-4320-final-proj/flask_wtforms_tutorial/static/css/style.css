@@ -8,14 +8,6 @@ h1 {
   color: #363a40;
 }
 
-<!-- ul.nav li:not(:last-child) {
-  display: inline-block;
-  text-align: right;
-  border-right: 1px solid black;
-  padding: 0 0.5rem;
-}
--->
-
 ul {
   list-style: none;
   padding: 0;
