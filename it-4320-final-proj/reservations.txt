@@ -6,9 +6,3 @@ Tim, 4, 3, TIiNmFOTC1040
 Janae, 5, 1, JIaNnFaOeTC1040
 Cyd, 8, 2, CIyNdFOTC1040
 Frank, 9, 3, FIrNaFnOkTC1040
-Bradin, 7, 3, BIrNaFdOiTnC1040
-Bradin, 9, 1, BIrNaFdOiTnC1040
-Bradin, 9, 0, BIrNaFdOiTnC1040
-Daniel, 4, 1, DIaNnFiOeTlC1040
-b, 0, 0, bINFOTC1040
-b, 0, 3, bINFOTC1040
