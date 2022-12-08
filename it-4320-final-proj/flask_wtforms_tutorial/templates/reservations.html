@@ -25,6 +25,7 @@
     </tr>
     {% endfor %}
   </table>
+  <p style="color:red;">{{ error }}</p>
   <form method="POST" action="/reservations">
       {{ form.csrf_token }}
       <div class="form-field">{{ form.first_name.label }} {{ form.first_name }}

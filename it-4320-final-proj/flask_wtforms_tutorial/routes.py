@@ -1,6 +1,7 @@
 from flask import current_app as app
 from flask import redirect, render_template, url_for, request, flash
 
+
 from .forms import *
 
 def loginAdmin(username,psw):
@@ -28,7 +29,8 @@ def CostAdmin(seatchart):
                 total += costchart[x][i]
 
     return "Total cost: " + str(total)
-    
+
+
 
 def loadreservations():
     f = open("reservations.txt", "r")
@@ -56,18 +58,26 @@ def loadreservations():
 
 def addreservations(firstname, row, col):
     
-    f = open("reservations.txt", "w")
-    inputxt = firstname + "," + row + "," + col + "\n"
+    f = open("reservations.txt", "a")
+    inputxt = "{0}, {1}, {2}".format(firstname, row, col)
     f.write(inputxt)
     f.close
     loadreservations()
     return "worked"
     
-#title = ("Seating Chart")
-#ResList = loadreservations()
-#total = CostAdmin()
+#RAFAS CODE
+def get_code(first_name, txt):
+    temp = list(txt)
 
-#BRADINS CODE
+    for i, c in enumerate(first_name):
+        temp.insert(i*2, c)
+    ''.join(temp)
+
+    e_ticket = ""
+    for i in range(len(temp)):
+        e_ticket += temp[i]
+    
+    return e_ticket
 
 #@app.route("/", methods=['GET', 'POST'])
 @app.route("/", methods=['GET', 'POST'])
@@ -114,5 +124,29 @@ def reservations():
     form = ReservationForm()
     title = ("Seating Chart")
     ResList = loadreservations()
-    return render_template("reservations.html", form=form, template="form-template", title=title, ResList=ResList)
 
+    try:
+        first_name = form.first_name.data
+        last_name = form.last_name.data
+        row = int(form.row.data)
+        seat = int(form.seat.data)
+    except TypeError:
+        form = ReservationForm()
+        return render_template("reservations.html", form=form, template="form-template", ResList=ResList, title=title)
+    
+    txt = "INFOTC1040"
+    e_ticket = get_code(first_name, txt)
+
+    if ResList[row-1][seat-1] == "X":
+        form = ReservationForm()
+        error_msg = "The seat you chose is unavailable. Try Again"
+        return render_template("reservations.html", error=error_msg, form=form, template="form-template", ResList=ResList, title=title) 
+    else:
+        form = ReservationForm()
+        f = open("reservations.txt", "a")
+        f.write("\n{0}, {1}, {2}, {3}".format(first_name, row, seat, e_ticket))
+        f.close()
+        ok_msg = "Your reservation was successful. {0} here is your e-ticket: {1}".format(first_name, e_ticket)
+        return render_template("reservations.html", form=form, template="form-template", error=ok_msg, title=title, ResList=ResList)
+
+    return render_template("reservations.html", form=form, template="form-template", title=title, ResList=ResList)

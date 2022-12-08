@@ -59,6 +59,7 @@ class ReservationForm(FlaskForm):
 
     reserve = SubmitField("Reserve a Seat")
 
+
 class AdminLoginForm(FlaskForm):
     """Admin login form"""
     
@@ -66,8 +67,6 @@ class AdminLoginForm(FlaskForm):
     username = StringField('Username', [DataRequired()])
     password = StringField('Password', [DataRequired()])
     login = SubmitField("Login")
-
-
 
 
 
