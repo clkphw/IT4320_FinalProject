@@ -26,7 +26,7 @@ class UserOptionForm(FlaskForm):
 
 class ReservationForm(FlaskForm):
     """Reservation Form"""
-    
+
     #THIS IS WHERE YOU WILL IMPLEMENT CODE TO POPULATE THE SYMBOL FIELD WITH STOCK OPTIONS
     first_name = StringField('First Name', [DataRequired()])
     last_name = StringField('Last Name', [DataRequired()])
@@ -58,7 +58,6 @@ class ReservationForm(FlaskForm):
     )
 
     reserve = SubmitField("Reserve a Seat")
-
 
 class AdminLoginForm(FlaskForm):
     """Admin login form"""

@@ -22,19 +22,6 @@ form {
   margin: 0 0 40px 0;
 }
 
-.nav {
-  text-align: right;
-}
-
-.nav li {
-  display: inline-block;
-  padding: 0 0.5rem;
-} 
-
-.nav li:not(:last-child) {
-  border-right: 1px solid black;
-}
-
 .formwrapper {
   background: white;
   width: 800px;
@@ -154,4 +141,11 @@ i {
 
 .g-recaptcha div {
   margin: auto;
+}
+
+#table__row{
+  text-align: center;
+}
+#table__header{
+  text-align: center;
 }
